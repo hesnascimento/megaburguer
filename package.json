@@ -1,0 +1,31 @@
+{
+  "name": "megaburguer",
+  "version": "1.0.0",
+  "description": "Projeto para avaliação de código",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "mocha \"test\\**\\*.spec.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hesnascimento/megaburguer.git"
+  },
+  "keywords": [
+    "code-sample",
+    "burguer",
+    "node10"
+  ],
+  "author": "Henrique S. Nascimento",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/hesnascimento/megaburguer/issues"
+  },
+  "homepage": "https://github.com/hesnascimento/megaburguer#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
