@@ -75,13 +75,20 @@ const ingredientes = [
 describe('IngredientesServices Class', () => {
   const ingredientesService = new IngredientesServices(ingredientes);
 
-  it('should thow error if constructor param is not an array', () => {
+  it('should thow error if constructor param is not an array or empty', () => {
     expect(() => new IngredientesServices('teste')).to.throw();
+  });
+
+  it('sould initialize from file if no param is guiven', () => {
+    const realIngredientes = new IngredientesServices();
+    expect(realIngredientes).to.have.a.property('ingredientes');
+    expect(realIngredientes.formFile).to.be.true;
   });
 
   describe('constructor', () => {
     it('should be instance of IngredientesService', () => {
       expect(ingredientesService).to.be.instanceOf(IngredientesServices);
+      expect(ingredientesService.formFile).to.be.false;
     });
 
     it('should have ingredientes', () => {
@@ -100,9 +107,9 @@ describe('IngredientesServices Class', () => {
       expect(ingrediente).to.be.an('undefined');
     });
 
-    it('should return undefined because parameter is not a string', () => {
-      const ingrediente = ingredientesService.getIngredienteById({ id: 'ovo' });
-      expect(ingrediente).to.be.an('undefined');
+    it('should throw Error because parameter is not a string', () => {
+      const ingredienteFn = () => ingredientesService.getIngredienteById({ id: 'ovo' });
+      expect(ingredienteFn).to.throw();
     });
   });
 
