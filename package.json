@@ -4,9 +4,9 @@
   "description": "Projeto para avaliação de código",
   "main": "src/server.js",
   "scripts": {
-    "test": "mocha \"test\\**\\*.spec.js\"",
+    "test": "mocha \"test/**/*.spec.js\"",
     "dev": "nodemon src/server.js",
-    "coverage": "nyc mocha \"test\\**\\*.spec.js\""
+    "coverage": "nyc mocha \"test/**/*.spec.js\""
   },
   "repository": {
     "type": "git",
