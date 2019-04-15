@@ -1,0 +1,27 @@
+[
+  {
+    "id": "alface",
+    "nome": "Alface",
+    "preco": 0.4
+  },
+  {
+    "id": "bacon",
+    "nome": "Bacon",
+    "preco": 2
+  },
+  {
+    "id": "hamburguer",
+    "nome": "Hambúrguer de carne",
+    "preco": 3
+  },
+  {
+    "id": "ovo",
+    "nome": "Ovo",
+    "preco": 0.8
+  },
+  {
+    "id": "queijo",
+    "nome": "Queijo",
+    "preco": 1.5
+  }
+]
