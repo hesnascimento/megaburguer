@@ -4,7 +4,9 @@
   "description": "Projeto para avaliação de código",
   "main": "src/server.js",
   "scripts": {
-    "test": "mocha \"test\\**\\*.spec.js\""
+    "test": "mocha \"test\\**\\*.spec.js\"",
+    "dev": "nodemon src/server.js",
+    "coverage": "nyc mocha \"test\\**\\*.spec.js\""
   },
   "repository": {
     "type": "git",
@@ -27,10 +29,18 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "mocha": "^6.1.2"
+    "mocha": "^6.1.2",
+    "nodemon": "^1.18.11"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.5.1",
+    "morgan": "^1.9.1",
+    "nyc": "^13.3.0",
+    "sinon": "^7.3.1",
+    "sinon-mongoose": "^2.2.1",
+    "sion": "0.0.1",
+    "uninstall": "0.0.0"
   }
 }

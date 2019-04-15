@@ -1,9 +1,15 @@
-const IngredientesService = require('../services/IngredientesService');
+const { error } = require('console');
+const Ingredientes = require('../models/Ingredientes');
 
 function listAll(req, res) {
-  const service = new IngredientesService();
-
-  res.json(service.getAll());
+  Ingredientes.find({})
+    .then((ingredientes) => {
+      res.json(ingredientes);
+    })
+    .catch((err) => {
+      error('[ERROR - IngredientesController::listAll]', err);
+      res.status(500).send();
+    });
 }
 
 module.exports = {
