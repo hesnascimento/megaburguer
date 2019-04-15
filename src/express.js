@@ -1,12 +1,16 @@
 const express = require('express');
 const monrgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const IngredientesRoutes = require('./routes/IngredientesRoutes');
 const LanchesRoutes = require('./routes/LanchesRoutes');
 
 const app = express();
 
-// Define os logs no formato COMBINEDçl~;[]
+// Aceita application/json
+app.use(bodyParser.json());
+
+// Define os logs no formato COMBINED
 app.use(monrgan('combined'));
 
 // Bindando as Rotas

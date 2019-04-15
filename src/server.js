@@ -11,6 +11,6 @@ mongoose.connect(MONGODB, {
   poolSize: 10,
 });
 
-app.listen('80', () => {
-  console.log('Escutando na porta 80');
+app.listen(process.env.PORT, () => {
+  console.log('Servidor iniciado na porta', process.env.PORT);
 });

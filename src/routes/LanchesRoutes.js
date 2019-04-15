@@ -3,6 +3,7 @@ const LanchesController = require('../controllers/LanchesController');
 
 const router = Router();
 
-router.get('/', LanchesController.listAll);
+router.get('/', LanchesController.listarTodos);
+router.post('/', LanchesController.processaLanche);
 
 module.exports = router;
