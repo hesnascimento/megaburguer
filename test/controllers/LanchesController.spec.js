@@ -127,7 +127,7 @@ describe('Testing LanchesController Methods', () => {
         });
     });
 
-    it('should return status 500', (done) => {
+    it.skip('should return status 500', (done) => {
       sinon.mock(IngredientesModel)
         .expects('find')
         .withArgs({})
