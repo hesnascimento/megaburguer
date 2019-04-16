@@ -1,6 +1,6 @@
 # MEGABURGUER
 
-Aplicação se seleção e customização de lanches.
+Aplicação de seleção e customização de lanches.
 
 [![Build Status](https://travis-ci.org/hesnascimento/megaburguer.svg?branch=master)](https://travis-ci.org/hesnascimento/megaburguer)
 
