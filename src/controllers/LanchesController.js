@@ -59,7 +59,7 @@ function promocaoLight(lanche) {
   const numAlface = lanche.ingredientes.filter(v => v === 'alface').length;
   const numBacon = lanche.ingredientes.filter(v => v === 'bacon').length;
 
-  return (numAlface > 0 && numBacon === 0)
+  return (numAlface > 0 && numBacon === 0);
 }
 
 /**
@@ -79,14 +79,14 @@ function calcularValorLanche(lanche) {
   const muitaCarne = promocaoMuitaCarne(lanche);
   const isLight = promocaoLight(lanche);
 
-  const descontoMuitoQueijo = (muitoQueijo * valorQueijoUn)
-  const descontoMuitaCarne = (muitaCarne * valorCarneUn)
+  const descontoMuitoQueijo = (muitoQueijo * valorQueijoUn);
+  const descontoMuitaCarne = (muitaCarne * valorCarneUn);
   const totalDescontos = descontoMuitaCarne + descontoMuitoQueijo;
 
   let valorFinal = (valorBase - totalDescontos).toFixed(2);
 
   if (isLight) {
-    valorFinal = (valorFinal - (valorFinal * 10 / 100)).toFixed(2)
+    valorFinal = (valorFinal - (valorFinal * 10 / 100)).toFixed(2);
   }
 
   return {
@@ -111,10 +111,14 @@ function geraValorLanche(lanche) {
       Ingredientes
         .find({})
         .then((ingredientes) => {
-          cacheIngredientes = ingredientes;
-          resolve(calcularValorLanche(lanche));
-        }).catch(err => {
-          console.error('[ERROR]', err)
+          cacheIngredientes = ingredientes.map((ingrediente) => {
+            const ingredienteJson = ingrediente.toJSON ? { ...ingrediente.toJSON() } : ingrediente;
+            return ingredienteJson;
+          });
+          const valorLanche = calcularValorLanche(lanche);
+          resolve(valorLanche);
+        }).catch((err) => {
+          error('[ERROR]', err);
           reject(err);
         });
     } else {
@@ -128,7 +132,7 @@ function processaLanche(req, res) {
 
   geraValorLanche(lancheBody)
     .then(lanche => res.json(lanche))
-    .catch(err => {
+    .catch((err) => {
       error('[ERRO LanchesController::processaLanche]', err);
       res.status(500).send();
     });
@@ -137,20 +141,28 @@ function processaLanche(req, res) {
 
 function listarTodos(req, res) {
   Lanches.find({})
-    .then(lanches => {
-      const promises = lanches.map(lanche => geraValorLanche(lanche));
+    .then((lanches) => {
+      const promises = lanches
+        .map((lanche) => {
+          const lancheJson = lanche.toJSON ? { ...lanche.toJSON() } : lanche;
+          return geraValorLanche(lancheJson);
+        });
 
       Promise.all(promises)
-        .then(valLanches => {
-          const ret = valLanches.map((vl, ix) => ({ ...lanches[ix], preco: vl.valorFinal }));
+        .then((valLanches) => {
+          const ret = valLanches
+            .map((vl, ix) => {
+              const lancheJson = lanches[ix].toJSON ? lanches[ix].toJSON() : lanches[ix];
+              return { ...lancheJson, preco: vl.valorFinal };
+            });
 
           res.json(ret);
-        }).catch(err => {
+        }).catch((err) => {
           error('[ERRO LanchesController::listarTodos]', err);
           res.status(500).send();
         });
     })
-    .catch(err => {
+    .catch((err) => {
       error('[ERRO LanchesController::listarTodos]', err);
       res.status(500).send();
     });

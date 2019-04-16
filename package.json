@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "mocha \"test/**/*.spec.js\"",
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon --inspect src/server.js",
     "coverage": "nyc mocha \"test/**/*.spec.js\"",
     "start": "node src/server.js"
   },
