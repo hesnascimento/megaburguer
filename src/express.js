@@ -10,10 +10,12 @@ const app = express();
 
 // Configura CORS
 
-const permitidos = process.env.CORS_LIST.split(',');
+const permitidos = process.env.CORS_LIST ? process.env.CORS_LIST.split(',') : [];
 const opcoesCors = {
   origin: (origem, callback) => {
-    if (permitidos.indexOf(origem) !== -1) {
+    if (!origem) {
+      callback(null, true);
+    } else if (permitidos.indexOf(origem) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Bloqueado no CORS'));
