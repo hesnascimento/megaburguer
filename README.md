@@ -4,6 +4,10 @@ Aplicação se seleção e customização de lanches.
 
 [![Build Status](https://travis-ci.org/hesnascimento/megaburguer.svg?branch=master)](https://travis-ci.org/hesnascimento/megaburguer)
 
+## Live Demo
+
+https://megaburguer.herokuapp.com
+
 ## Pré-requisitos
 - NodeJS 8 ou maior
 - NPM 5.6 ou maior
